@@ -33,7 +33,6 @@ const GameBoard = (() => {
 function Player(name, symbol) {
   let winner = false;
   const getSymbol = () => symbol;
-  const getScore = () => score;
   const increaseScore = () => {
     score++;
   };
@@ -48,7 +47,6 @@ function Player(name, symbol) {
   return {
     name,
     getSymbol,
-    getScore,
     increaseScore,
     resetPlayer,
     isWinner,
