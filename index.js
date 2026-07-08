@@ -1,6 +1,6 @@
 // TIC TAC TOE by Fredy Villatoro
 
-// game Board Factory Function
+// game Board IIFE
 const GameBoard = (() => {
   const board = [
     ["", "", ""],
@@ -18,12 +18,21 @@ const GameBoard = (() => {
     );
   };
 
-  const placeMark = (xCor, yCor, mark) => {
-    board[yCor - 1][xCor - 1] = mark;
+  const placeMark = (xCor, yCor, symbol) => {
+    board[yCor - 1][xCor - 1] = symbol;
   };
 
   return { getBoard, resetBoard, placeMark };
 })();
 
-GameBoard.placeMark(1, 2, "x");
-console.log(GameBoard.getBoard());
+// Player Factory Function
+function Player(name, symbol) {
+  let score = 0;
+  const getSymbol = () => symbol;
+  const getScore = () => score;
+  const increaseScore = () => {
+    score++;
+  };
+
+  return { name, getSymbol, getScore, increaseScore };
+}
