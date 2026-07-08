@@ -33,6 +33,8 @@ function Player(name, symbol) {
   const increaseScore = () => {
     score++;
   };
-
-  return { name, getSymbol, getScore, increaseScore };
+  const resetScore = () => {
+    score = 0;
+  };
+  return { name, getSymbol, getScore, increaseScore, resetScore };
 }
