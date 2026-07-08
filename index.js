@@ -3,9 +3,9 @@
 // game Board IIFE
 const GameBoard = (() => {
   const board = [
-    ["X", "", "X"],
-    ["X", "", "X"],
-    ["", "X", "X"],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
   ];
 
   const getBoard = () => board;
@@ -38,7 +38,7 @@ function Player(name, symbol) {
   };
   const isWinner = () => winner;
   const setWinner = () => {
-    winnner = true;
+    winner = true;
   };
 
   return {
@@ -119,7 +119,7 @@ const GameLogic = (() => {
       }
     }
     if (gameWon) {
-      console.log("DIAGONAL LINE WIN 1");
+      console.log("DIAGONAL LINE WIN 2");
       gameWon = true;
       currentPlayer.setWinner();
       return gameWon;
@@ -172,3 +172,21 @@ const GameLogic = (() => {
     isGameWon,
   };
 })();
+
+while (!GameLogic.isGameWon()) {
+  GameLogic.getCurrentPlayerCoors();
+  while (GameLogic.isInvalidTile()) {
+    alert("INVALID TRY AGAIN");
+    GameLogic.getCurrentPlayerCoors();
+  }
+  GameLogic.placeCurrentPlayerMark();
+  // GameLogic.changeTurn();
+  console.log(GameBoard.getBoard());
+}
+console.log(player1.isWinner());
+if (GameLogic.isGameWon()) {
+  let gameWinner = player1.isWinner() ? player1 : player2;
+  alert(`${gameWinner.name} is the winner!`);
+} else {
+  alert("It was a draw");
+}
