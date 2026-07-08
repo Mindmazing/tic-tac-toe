@@ -3,9 +3,9 @@
 // game Board IIFE
 const GameBoard = (() => {
   const board = [
-    ["", "", ""],
-    ["", "", ""],
-    ["", "", ""],
+    ["X", "", "X"],
+    ["X", "", "X"],
+    ["", "X", "X"],
   ];
 
   const getBoard = () => board;
@@ -92,7 +92,67 @@ const GameLogic = (() => {
 
   const isGameWon = () => {
     let currentPlayerSymbol = currentPlayer.getSymbol();
-    currentPlayer.setWinner();
+    let gameWon = true;
+
+    // check first diagonal line
+    for (let i = 1; i <= 3; i++) {
+      if (GameBoard.selectTile(i, i) !== currentPlayerSymbol) {
+        gameWon = false;
+        break;
+      }
+    }
+    if (gameWon) {
+      console.log("DIAGONAL LINE WIN 1");
+      gameWon = true;
+      currentPlayer.setWinner();
+      return gameWon;
+    }
+
+    // check second diagonal line
+    gameWon = true;
+    let y = 1;
+    let x = 3;
+    for (let i = 0; i < 3; i++) {
+      if (GameBoard.selectTile(x--, y++) !== currentPlayerSymbol) {
+        gameWon = false;
+        break;
+      }
+    }
+    if (gameWon) {
+      console.log("DIAGONAL LINE WIN 1");
+      gameWon = true;
+      currentPlayer.setWinner();
+      return gameWon;
+    }
+
+    // check Vertical lines
+    for (let i = 1; i <= 3; i++) {
+      if (
+        GameBoard.selectTile(i, 1) === currentPlayerSymbol &&
+        GameBoard.selectTile(i, 2) === currentPlayerSymbol &&
+        GameBoard.selectTile(i, 3) === currentPlayerSymbol
+      ) {
+        console.log("VERTICAL WIN");
+        gameWon = true;
+        currentPlayer.setWinner();
+        return gameWon;
+      }
+    }
+    // check Horizontal lines
+    for (let i = 1; i <= 3; i++) {
+      if (
+        GameBoard.selectTile(1, i) === currentPlayerSymbol &&
+        GameBoard.selectTile(2, i) === currentPlayerSymbol &&
+        GameBoard.selectTile(3, i) === currentPlayerSymbol
+      ) {
+        console.log("HORIZONTAL WIN");
+        gameWon = true;
+        currentPlayer.setWinner();
+        return gameWon;
+      }
+    }
+
+    return gameWon;
   };
 
   const restartGameLogic = () => {
@@ -109,5 +169,6 @@ const GameLogic = (() => {
     isInvalidTile,
     getCurrentPlayerCoors,
     restartGameLogic,
+    isGameWon,
   };
 })();
