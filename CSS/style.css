@@ -107,6 +107,7 @@ body {
 
 /* Game container styles */
 .game-container {
+  position: relative;
   aspect-ratio: 1/1;
   width: 80%;
   display: grid;
@@ -114,6 +115,25 @@ body {
   grid-template-rows: repeat(3, 1fr);
   background-color: var(--dark-blue-color);
   gap: 0.2em;
+}
+
+.game-block-wall {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--blue-color);
+  opacity: 0.8;
+}
+
+.game-block-wall h2 {
+  text-align: center;
+  font-size: 3rem;
 }
 
 /* buttons Container */
@@ -152,6 +172,9 @@ button:hover {
   justify-content: center;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 6cqw;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
 }
 
 .tile:hover {
@@ -192,4 +215,14 @@ button:hover {
 .player-score p {
   margin-bottom: -2rem;
   font-weight: 200;
+}
+
+/* win display */
+#win-display {
+  display: none;
+  opacity: 0.9;
+}
+
+#win-display h2 {
+  font-weight: bold;
 }
