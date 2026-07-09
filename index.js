@@ -316,7 +316,7 @@ const Game = (() => {
 
           if (GameLogic.boardIsFull()) {
             gameWinWall.style.display = "flex";
-            gameWinWall.querySelector("h2").innerText = "Tie";
+            gameWinWall.querySelector("h2").innerText = "Draw";
           }
         } else {
           // Logic after player wins
