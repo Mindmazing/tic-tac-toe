@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+body {
+  /* 4. Increase line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  width: 100%;
+}
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+}
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+:root {
+  --white-color: #f6f1f1;
+  --blue-color: #19a7ce;
+  --black-color: #000000;
+  --dark-blue-color: #146c94;
+}
+
+body {
+  background-color: var(--blue-color);
+  color: var(--black-color);
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+/* Game Area */
+.game-area {
+  gap: 4em;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Game container styles */
+.game-container {
+  aspect-ratio: 1/1;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  background-color: var(--dark-blue-color);
+  gap: 0.2em;
+}
+
+/* buttons Container */
+button {
+  cursor: pointer;
+  padding: 0.5em 0;
+  border-radius: 0.2em;
+  font-weight: 300;
+  background-color: var(--dark-blue-color);
+  border: 2px solid var(--dark-blue-color);
+  color: var(--white-color);
+  transition: 0.3s;
+}
+
+button:hover {
+  border: 2px solid var(--dark-blue-color);
+  background-color: var(--blue-color);
+  color: var(--dark-blue-color);
+  font-weight: bold;
+}
+
+.game-buttons {
+  display: flex;
+  width: 80%;
+  gap: 1em;
+}
+
+/* game tiles styling */
+
+.tile {
+  position: relative;
+  background-color: var(--blue-color);
+  padding: 0.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tile:hover {
+  opacity: 0.5;
+}
+
+/* Player container */
+.player-container {
+  flex-direction: column;
+  gap: 1em;
+}
+
+.player-container > form {
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
+}
+
+.player-container > form > input {
+  padding: 0.5em;
+  border-radius: 0.2em;
+  border: none;
+}
+
+/* player score */
+.player-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-size: 7rem;
+}
+
+.player-score p {
+  margin-bottom: -2rem;
+  font-weight: 200;
+}

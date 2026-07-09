@@ -173,20 +173,32 @@ const GameLogic = (() => {
   };
 })();
 
-while (!GameLogic.isGameWon()) {
-  GameLogic.getCurrentPlayerCoors();
-  while (GameLogic.isInvalidTile()) {
-    alert("INVALID TRY AGAIN");
-    GameLogic.getCurrentPlayerCoors();
-  }
-  GameLogic.placeCurrentPlayerMark();
-  // GameLogic.changeTurn();
-  console.log(GameBoard.getBoard());
-}
-console.log(player1.isWinner());
-if (GameLogic.isGameWon()) {
-  let gameWinner = player1.isWinner() ? player1 : player2;
-  alert(`${gameWinner.name} is the winner!`);
-} else {
-  alert("It was a draw");
-}
+// const webGame = (()=>{})()
+
+// const Game = (()=>{})()
+
+// while (!GameLogic.boardIsFull()) {
+//   GameLogic.getCurrentPlayerCoors();
+//   while (GameLogic.isInvalidTile()) {
+//     alert("INVALID TRY AGAIN");
+//     GameLogic.getCurrentPlayerCoors();
+//   }
+//   GameLogic.placeCurrentPlayerMark();
+
+//   // check if game is already won, dont change turns
+//   if (!GameLogic.isGameWon()) {
+//     GameLogic.changeTurn();
+//   } else {
+//     break;
+//   }
+
+//   console.log(GameBoard.getBoard());
+// }
+
+// console.log(player1.isWinner());
+// if (GameLogic.isGameWon()) {
+//   let gameWinner = player1.isWinner() ? player1 : player2;
+//   alert(`${gameWinner.name} is the winner!`);
+// } else {
+//   alert("It was a draw");
+// }
