@@ -90,7 +90,6 @@ const GameLogic = (() => {
   const setPlayer1 = (name) => {
     player1 = Player(name, "X", "1");
     currentPlayer = player1;
-    console.log(player1);
   };
   const setPlayer2 = (name) => {
     player2 = Player(name, "O", "2");
@@ -120,7 +119,6 @@ const GameLogic = (() => {
 
   const isInvalidTile = () => {
     let tileSelected = GameBoard.selectTile(xCor, yCor);
-    console.log(tileSelected);
     return tileSelected !== "";
   };
 
@@ -136,7 +134,6 @@ const GameLogic = (() => {
       }
     }
     if (gameWon) {
-      console.log("DIAGONAL LINE WIN 1");
       gameWon = true;
       currentPlayer.setWinner();
       return gameWon;
@@ -153,7 +150,6 @@ const GameLogic = (() => {
       }
     }
     if (gameWon) {
-      console.log("DIAGONAL LINE WIN 2");
       gameWon = true;
       currentPlayer.setWinner();
       return gameWon;
@@ -166,7 +162,6 @@ const GameLogic = (() => {
         GameBoard.selectTile(i, 2) === currentPlayerSymbol &&
         GameBoard.selectTile(i, 3) === currentPlayerSymbol
       ) {
-        console.log("VERTICAL WIN");
         gameWon = true;
         currentPlayer.setWinner();
         return gameWon;
@@ -179,7 +174,6 @@ const GameLogic = (() => {
         GameBoard.selectTile(2, i) === currentPlayerSymbol &&
         GameBoard.selectTile(3, i) === currentPlayerSymbol
       ) {
-        console.log("HORIZONTAL WIN");
         gameWon = true;
         currentPlayer.setWinner();
         return gameWon;
@@ -194,7 +188,6 @@ const GameLogic = (() => {
     yCor = null;
     currentPlayer = player1;
     GameBoard.resetBoard();
-    console.log(GameBoard.getBoard());
   };
 
   const restartGameLogic = () => {
@@ -256,7 +249,6 @@ const documentListeners = (() => {
     event.preventDefault();
     let playerName = player1NameForm.querySelector("input").value;
     GameLogic.setPlayer1(playerName);
-    console.log(GameLogic.getCurrentPlayer());
     setPlayerTitle(playerName, player1NameTitle);
     // hide display
     player1NameForm.style.display = "none";
@@ -329,7 +321,6 @@ const documentListeners = (() => {
         // Logic after player wins
         GameLogic.getCurrentPlayer().increaseScore();
         let playerTag = GameLogic.getCurrentPlayer().getTag();
-        console.log(playerTag);
         let playerToIncrease = playerTag === "1" ? player1Score : player2Score;
         setPlayerScore(
           GameLogic.getCurrentPlayer().getScore(),
@@ -343,7 +334,6 @@ const documentListeners = (() => {
 
       // check if game tiles are full and game not won
     } else {
-      console.log("invalid tile");
     }
   });
 })();
